@@ -71,5 +71,39 @@ public class Main {
             System.out.println("--------------------");
             System.out.println(transaction);
         }
+
+       // Test Investment Account
+InvestmentAccount investment = new InvestmentAccount(
+        "ACC002",
+        "Gaborone",
+        1000.00
+);
+
+admin.createAccount(customer, investment);
+
+investment.deposit(500.00);
+investment.withdraw(200.00);
+investment.payInterest();
+
+System.out.println("\nINVESTMENT ACCOUNT");
+System.out.println("Balance: BWP " + investment.getBalance()); 
+
+// Test Cheque Account
+ChequeAccount cheque = new ChequeAccount(
+        "ACC003",
+        "Gaborone",
+        2000.00,
+        "ABC Company",
+        "Gaborone"
+);
+
+admin.createAccount(customer, cheque);
+
+cheque.deposit(500.00);
+cheque.withdraw(300.00);
+
+System.out.println("\nCHEQUE ACCOUNT");
+System.out.println("Employer: " + cheque.getEmployerName());
+System.out.println("Balance: BWP " + cheque.getBalance());
     }
 }
