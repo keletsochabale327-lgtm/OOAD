@@ -100,6 +100,7 @@ ChequeAccount cheque = new ChequeAccount(
 admin.createAccount(customer, cheque);
 
 cheque.deposit(500.00);
+cheque.deposit(100.00, "Salary payment");
 cheque.withdraw(300.00);
 
 System.out.println("\nCHEQUE ACCOUNT");

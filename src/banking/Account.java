@@ -44,6 +44,25 @@ public abstract class Account {
         recordTransaction("DEPOSIT", amount);
     }
 
+    public void deposit(double amount, String description) {
+    if (amount <= 0) {
+        throw new IllegalArgumentException(
+                "Deposit must be greater than zero.");
+    }
+
+    balance += amount;
+
+    Transaction transaction = new Transaction(
+            "DEPOSIT",
+            UUID.randomUUID().toString(),
+            amount,
+            balance,
+            description
+    );
+
+    transactions.add(transaction);
+}
+
     // Default withdrawal behaviour
     public void withdraw(double amount) {
 
