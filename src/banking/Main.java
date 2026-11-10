@@ -43,6 +43,12 @@ public class Main {
         // Perform a deposit
         savings.deposit(200.00);
 
+        try {
+        savings.withdraw(100);
+        } catch (UnsupportedOperationException e) {
+        System.out.println("TEST PASSED: Savings Account does not allow withdrawals.");
+        }
+
         // Pay monthly interest
         savings.payInterest();
 
@@ -88,6 +94,35 @@ investment.payInterest();
 
 System.out.println("\nINVESTMENT ACCOUNT");
 System.out.println("Balance: BWP " + investment.getBalance()); 
+
+try {
+    InvestmentAccount testInvestment =
+            new InvestmentAccount("ACC004", "Gaborone", 400);
+
+    System.out.println("TEST FAILED: Investment Account accepted less than BWP500.");
+
+} catch (IllegalArgumentException e) {
+    System.out.println("TEST PASSED: Investment Account rejects deposits below BWP500.");
+}
+
+try {
+    ChequeAccount testCheque =
+            new ChequeAccount("ACC005", "Gaborone", 1000, "", "");
+
+    System.out.println("TEST FAILED: Cheque Account accepted missing employer details.");
+
+} catch (IllegalArgumentException e) {
+    System.out.println("TEST PASSED: Cheque Account requires employer details.");
+}
+
+try {
+    savings.deposit(-100);
+
+    System.out.println("TEST FAILED: Negative deposit was accepted.");
+
+} catch (IllegalArgumentException e) {
+    System.out.println("TEST PASSED: Negative deposits are rejected.");
+}
 
 // Test Cheque Account
 ChequeAccount cheque = new ChequeAccount(
