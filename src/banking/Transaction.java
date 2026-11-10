@@ -1,14 +1,12 @@
 
 package banking;
 
-import java.time.LocalDateTime;
-
 public class Transaction {
 
     private String type;
     private String transactionID;
     private double amount;
-    private LocalDateTime date;
+    private String date;
     private double balanceAfter;
     private String description;
 
@@ -21,7 +19,7 @@ public class Transaction {
         this.amount = amount;
         this.balanceAfter = balanceAfter;
         this.description = description;
-        this.date = LocalDateTime.now();
+        this.date = java.time.LocalDateTime.now().toString();
     }
 
     public String getType() {
@@ -36,7 +34,7 @@ public class Transaction {
         return amount;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 

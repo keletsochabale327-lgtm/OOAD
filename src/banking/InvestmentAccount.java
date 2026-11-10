@@ -32,4 +32,9 @@ public class InvestmentAccount extends Account implements InterestBearing {
         double interest = calculateInterest();
         addInterest(interest);
     }
+
+    @Override
+public String getAccountType() {
+    return "Investment Account";
+}
 }

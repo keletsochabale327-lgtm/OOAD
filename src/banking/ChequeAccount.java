@@ -35,4 +35,9 @@ public class ChequeAccount extends Account {
     public String getEmployerAddress() {
         return employerAddress;
     }
+
+    @Override
+public String getAccountType() {
+    return "Cheque Account";
+}
 }

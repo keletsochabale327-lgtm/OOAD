@@ -5,14 +5,14 @@ public class IndividualCustomer extends Customer {
 
     private String firstName;
     private String surname;
-    private String idNumber;
+    private int idNumber;
     private String dateOfBirth;
     private String employerName;
     private String employerAddress;
 
     public IndividualCustomer(String customerID, String email,
             String address, int phone, String firstName,
-            String surname, String idNumber, String dateOfBirth,
+            String surname, int idNumber, String dateOfBirth,
             String employerName, String employerAddress) {
 
         super(customerID, email, address, phone);
@@ -33,7 +33,7 @@ public class IndividualCustomer extends Customer {
         return surname;
     }
 
-    public String getIdNumber() {
+    public int getIdNumber() {
         return idNumber;
     }
 

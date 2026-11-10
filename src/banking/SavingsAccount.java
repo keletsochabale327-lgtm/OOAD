@@ -3,7 +3,7 @@ package banking;
 
 public class SavingsAccount extends Account implements InterestBearing {
 
-    private final double interestRate = 0.0005;
+    private final String interestRate = "0.05%";
 
     public SavingsAccount(String accountNumber, String branch,
                           double openingBalance) {
@@ -13,7 +13,10 @@ public class SavingsAccount extends Account implements InterestBearing {
 
     @Override
     public double calculateInterest() {
-        return getBalance() * interestRate;
+    double rate = Double.parseDouble(
+            interestRate.replace("%", "")) / 100;
+
+    return getBalance() * rate;
     }
 
     @Override
@@ -21,4 +24,15 @@ public class SavingsAccount extends Account implements InterestBearing {
         double interest = calculateInterest();
         addInterest(interest);
     }
+
+    @Override
+public void withdraw(double amount) {
+    throw new UnsupportedOperationException(
+            "Withdrawals are not allowed on Savings Accounts.");
+}
+
+@Override
+public String getAccountType() {
+    return "Savings Account";
+}
 }

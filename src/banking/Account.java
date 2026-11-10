@@ -1,7 +1,6 @@
 
 package banking;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +10,7 @@ public abstract class Account {
     private String accountNumber;
     private double balance;
     private String branch;
-    private LocalDate openDate;
+    private String openDate;
     private String status;
 
     private List<Transaction> transactions = new ArrayList<>();
@@ -27,7 +26,7 @@ public abstract class Account {
         this.accountNumber = accountNumber;
         this.branch = branch;
         this.balance = openingBalance;
-        this.openDate = LocalDate.now();
+        this.openDate = java.time.LocalDate.now().toString();
         this.status = "ACTIVE";
     }
 
@@ -63,12 +62,7 @@ public abstract class Account {
     transactions.add(transaction);
 }
 
-    // Default withdrawal behaviour
-    public void withdraw(double amount) {
-
-        throw new UnsupportedOperationException(
-                "Withdrawals are not allowed for this account.");
-    }
+   public abstract void withdraw(double amount);
 
     // Withdrawal logic for eligible account types
     protected void withdrawFromAccount(double amount) {
@@ -123,7 +117,7 @@ public abstract class Account {
         return branch;
     }
 
-    public LocalDate getOpenDate() {
+    public String getOpenDate() {
         return openDate;
     }
 
@@ -139,7 +133,5 @@ public abstract class Account {
         this.status = status;
     }
 
-    public String getAccountType() {
-        return getClass().getSimpleName();
-    }
+    public abstract String getAccountType();
 }

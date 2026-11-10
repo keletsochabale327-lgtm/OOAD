@@ -9,18 +9,20 @@ public class BankAdministrator {
     private String employeeID;
     private String firstName;
     private String surname;
+    private int phone;
     private String emailAddress;
     private String branch;
 
     private List<Customer> customers = new ArrayList<>();
 
     public BankAdministrator(String employeeID, String firstName,
-                             String surname, String emailAddress,
+                             String surname, int phone, String emailAddress,
                              String branch) {
 
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.surname = surname;
+        this.phone = phone;
         this.emailAddress = emailAddress;
         this.branch = branch;
     }
@@ -51,12 +53,24 @@ public class BankAdministrator {
                     "Customer must be registered first.");
         }
 
-        if (account instanceof ChequeAccount
-                && !(customer instanceof IndividualCustomer)) {
+        if (account instanceof ChequeAccount) {
 
-            throw new IllegalArgumentException(
-                    "Cheque Accounts are only available to working individuals.");
-        }
+    if (!(customer instanceof IndividualCustomer)) {
+        throw new IllegalArgumentException(
+                "Cheque Accounts are only available to individuals.");
+    }
+
+    IndividualCustomer individual = (IndividualCustomer) customer;
+
+    if (individual.getEmployerName() == null
+            || individual.getEmployerName().isBlank()
+            || individual.getEmployerAddress() == null
+            || individual.getEmployerAddress().isBlank()) {
+
+        throw new IllegalArgumentException(
+                "Employer details are required for a Cheque Account.");
+    }
+}
 
         for (Customer existing : customers) {
             for (Account existingAccount : existing.getAccounts()) {
@@ -86,6 +100,10 @@ public class BankAdministrator {
 
     public String getSurname() {
         return surname;
+    }
+
+    public int getPhone() {
+        return phone;
     }
 
     public String getEmailAddress() {

@@ -10,6 +10,7 @@ public class Main {
                 "ADM001",
                 "John",
                 "Smith",
+                77058483,
                 "admin@bank.com",
                 "Gaborone"
         );
@@ -22,7 +23,7 @@ public class Main {
                 71234567,
                 "Mary",
                 "Jones",
-                "123456789",
+                123456789,
                 "2000-05-15",
                 "ABC Company",
                 "Gaborone"
