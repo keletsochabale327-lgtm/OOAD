@@ -1,5 +1,5 @@
 
-package banking;
+package banking.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +80,11 @@ public abstract class Account {
         balance -= amount;
 
         recordTransaction("WITHDRAWAL", amount);
+    }
+
+    // Package-private: used only by AccountFactory to restore a stored balance
+    void restoreBalance(double balance) {
+        this.balance = balance;
     }
 
     // Record every transaction

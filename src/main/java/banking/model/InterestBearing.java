@@ -1,5 +1,5 @@
 
-package banking;
+package banking.model;
 
 public interface InterestBearing {
 

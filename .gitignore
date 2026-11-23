@@ -1,2 +1,9 @@
 out/
 *.class
+out/
+*.c
+.idea/
+*.iml
+target/
+hs_err_pid*.log
+*.log

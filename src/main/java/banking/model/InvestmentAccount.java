@@ -1,5 +1,5 @@
 
-package banking;
+package banking.model;
 
 public class InvestmentAccount extends Account implements InterestBearing {
 
